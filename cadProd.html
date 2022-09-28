@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<script src="jquery.2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Controle de caixa</title>
+</head>
+<body>
+    <body>
+        <div style="margin-right: 1500px;">
+
+            <section id="content" style="padding:  unset;"  >
+                <input  type="submit" value="Menu" onclick="window.location.href = 'menu.html'" >
+            </section>
+        </div>
+        <body>
+            <div >
+                <section id="content">
+                    <form>
+                        <h1>Cadastro de Produto</h1>
+                        <div>
+                            <input  type="text" placeholder="Codigo do produto"  id="idProd" />
+                        </div>
+
+                        <div>
+                            <input  type="text" placeholder="Produto"  id="prod" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Quantidade"  id="quant" />
+                        </div>
+                    </form><!-- form -->
+                    
+                </section><!-- content -->
+                <div id="content" class="container" style="padding: 20px;"  >
+                    <input id="Cadastrar" type="submit" value="Cadastrar" style="margin: -15px; margin-left: 30px;"/>
+                    
+                </div>
+            </div><!-- container -->
+            </body>
+        </body>
+
+        <script>
+            function Cadastrar(idProd, prod, quant) {
+                $.ajax
+				({
+					type: 'POST',
+					dataType: 'html',
+					url: 'cadastro.php',
+					beforeSend: function () {
+						$("#dados").html("Carregando...");
+					},
+
+					data: {
+						idProd: idProd,
+						prod: prod,
+						quant: quant,
+
+
+					},
+
+					success: function (msg) {
+
+						$("#dados").html(msg);
+					}
+				})
+
+		}
+
+
+		$('#Cadastrar').click(function () {
+			Cadastrar(
+				$("#idProd").val(),
+				$("#prod").val(),
+				$("#quant").val(),
+			)
+		});
+		
+        
+            
+                </script>
+
+<div id="dados" align="" class="container" style="margin-left: 500px;" >
+    <th>
+        
+    </th>
+</div>
+</body>
+</html>
